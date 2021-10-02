@@ -16,33 +16,33 @@ addEventListener("click", function() {
 })
 
 function updateSlidePosition(){
+    console.log('slides',slidePosition)
+ 
     for (let slide of slides) {
         slide.classList.remove('carousel_item--visible');
-        slide.classList.add('carousel_item--hidden');
+        slide.classList.add('carousel_item--hidden');  
     }
 
     slides[slidePosition].classList.add('carousel_item--visible');
 }
 
-function moveToNextSlide () {
-    updateSlidePosition()
 
-    if (slidePosition === totalSlides){
+function moveToNextSlide () {
+    if (slidePosition === totalSlides -1){
         slidePosition = 0;
-    }
-    else{
+    } else{
         slidePosition++;
     }
+    updateSlidePosition();
 }
 
-function moveToPrevSlide () {
-    updateSlidePosition()
-
+function moveToPrevSlide () {  
    if (slidePosition === 0){
-       slidePosition = 0;
-   }
-   else{
+       slidePosition = totalSlides -1;
+   } else{
        slidePosition--;
    }
+
+   updateSlidePosition();
 }
 
