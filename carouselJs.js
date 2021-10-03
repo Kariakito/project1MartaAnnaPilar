@@ -1,45 +1,61 @@
 let slidePosition = 0;
-const slides = document.getElementsByClassName('carousel_item');
+let slides = document.getElementsByClassName('carousel__item');
 const totalSlides = slides.length;
 
-//console.log(totalSlides);
+console.log('totalSlide',totalSlides);
 
 document.
-getElementById('carousel_button--next')
+getElementById('carousel__button--next')
 addEventListener("click", function() {
     moveToNextSlide();
-})
+});
 document.
-getElementById('carousel_button--prev')
+getElementById('carousel__button--prev')
 addEventListener("click", function() {
     moveToPrevSlide();
 })
 
 function updateSlidePosition(){
-    console.log('slides',slidePosition)
+    console.log("updateSlidePosition");
+    //console.log('slides',slides);
+    console.log('slidePosition',slidePosition);
  
-    for (let slide of slides) {
-        slide.classList.remove('carousel_item--visible');
-        slide.classList.add('carousel_item--hidden');  
+    for (let i=0;i<=totalSlides-1;i++) {
+        console.log("i=",i);
+        console.log('Slide before',slides[i]);
+        console.log('Before',slides[i].classList);
+
+        slides[i].classList.remove('carousel__item--visible');
+        console.log('Between',slides[i].classList);
+        
+        slides[i].classList.add('carousel__item--hidden');  
+        console.log('After',slides[i].classList);
+
+        console.log('Slide after',slides[i]);
+        console.log("")
+
     }
 
-    slides[slidePosition].classList.add('carousel_item--visible');
+    slides[slidePosition].classList.add('carousel__item--visible');
 }
 
 
 function moveToNextSlide () {
+    console.log("moveToNextSlide");
+
     if (slidePosition === totalSlides -1){
         slidePosition = 0;
-    } else{
+    } else {
         slidePosition++;
     }
     updateSlidePosition();
+
 }
 
 function moveToPrevSlide () {  
    if (slidePosition === 0){
        slidePosition = totalSlides -1;
-   } else{
+   } else {
        slidePosition--;
    }
 
